@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits: 
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+        ports:
+        - containerPort: 6379
+        name: redis-test

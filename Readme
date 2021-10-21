@@ -1,0 +1,8 @@
+k apply -f deployment.yaml
+k apply -f service.yaml
+
+Test conn:
+
+#pip install redis
+
+#python test.py
